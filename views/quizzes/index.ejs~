@@ -27,8 +27,8 @@
 </table>
 
 <form methods='get' action='/quizzes'>
-	<input type="text" name="search" placeholder="Introducir Busqueda" />
-	<input type="submit" value="Buscar" />
+	<input type="text" name="search" placeholder="Introducir Busquda" />
+	<input type="submit" value="buscar" />
 </form>
 
 <% if (session.user) { %>

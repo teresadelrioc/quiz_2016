@@ -62,6 +62,7 @@ router.delete('/quizzes/:quizId(\\d+)',    	sessionController.loginRequired,
 											quizController.ownershipRequired, 
 											quizController.destroy);
 
+
 // Definición de rutas de comentarios
 router.get('/quizzes/:quizId(\\d+)/comments/new',  sessionController.loginRequired, 
 	                                               commentController.new);

@@ -35,12 +35,9 @@ exports.ownershipRequired = function(req, res, next){
 
 // GET /quizzes
 exports.index = function(req, res, next) {
-	var search = req.query.search || "";
-	models.Quiz.findAll({where: {question: {$like: "%"+search+"%"}}})
+	models.Quiz.findAll()
 		.then(function(quizzes) {
-			if(quizzes){
-			res.render('quizzes/index.ejs', { quizzes: quizzes, title: 'Lista Preguntas'});
-			} else {throw new Error('No existe es quiz en la base de datos');}
+			res.render('quizzes/index.ejs', { quizzes: quizzes});
 		})
 		.catch(function(error) {
 			next(error);

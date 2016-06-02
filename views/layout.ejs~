@@ -29,6 +29,12 @@
               <a href="/session?_method=DELETE">Logout</a>
           <% } %>
         </div>
+	<div class="left">
+		<strong>Busqueda:</strong>
+		<input type="text" id="pantalla">
+		<button id="resultado">Click</button>
+
+	</div>
 
       <h2>Quiz<span class="no-narrow">: el juego de las preguntas</span></h2>
     </header>
@@ -37,7 +43,7 @@
         <a href="/">Inicio</a>
         <a href="/quizzes">Preguntas</a>
         <a href="/users">Usuarios</a>
-	
+	<a href="/author">Creditos</a>
       </nav>
 
        <section>
