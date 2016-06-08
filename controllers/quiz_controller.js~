@@ -38,9 +38,15 @@ exports.index = function(req, res, next) {
 	var search = req.query.search || "";
 	models.Quiz.findAll({where: {question: {$like: "%"+search+"%"}}})
 		.then(function(quizzes) {
+			if((!req.params.format) || (req.params.format === "html")){
 			if(quizzes){
 			res.render('quizzes/index.ejs', { quizzes: quizzes, title: 'Lista Preguntas'});
 			} else {throw new Error('No existe es quiz en la base de datos');}
+			} else if (req.params.format === "json"){
+				res.send(JSON.stringify(quizzes));
+			} else {
+				throw new Error('No se admite formato=' + req.params.format);
+			}
 		})
 		.catch(function(error) {
 			next(error);
@@ -53,8 +59,15 @@ exports.show = function(req, res, next) {
 
 	var answer = req.query.answer || '';
 
-	res.render('quizzes/show', {quiz: req.quiz,
-								answer: answer});
+	if((!req.params.format) || (req.params.format === "html")){
+
+	res.render('quizzes/show', {quiz: req.quiz, answer: answer, title:'Pregunta especifica'});
+	}
+	 else if (req.params.format === "json"){
+				res.send(JSON.stringify(quizzes));
+			} else {
+				next( new Error('No se admite formato=' + req.params.format));
+			}
 };
 
 
