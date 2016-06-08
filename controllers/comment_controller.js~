@@ -32,8 +32,7 @@ exports.new = function(req, res, next) {
 exports.create = function(req, res, next) {
   var comment = models.Comment.build(
       { text:   req.body.comment.text,          
-        QuizId: req.quiz.id,
-	AuthorId: req.session.user.id
+        QuizId: req.quiz.id
       });
 
   comment.save()

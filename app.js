@@ -48,7 +48,7 @@ app.use( function (req,res,next){
 	    var horaUltima = req.session.user.expires;
 	    var value1 = nuevaHora.valueOf();
 	    var diferencia = value1 - horaUltima;
-		if (diferencia > 20000){
+		if (diferencia > 120000){
 		delete req.session.user;
 		res.redirect("/session");
 		} else {
